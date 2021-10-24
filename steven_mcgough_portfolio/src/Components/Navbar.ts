@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 type Props = {
   name: string;
+  members: [{}];
   data: {
     title: string;
   }[];
@@ -33,6 +34,13 @@ const Navbar = (props: Props) => {
         ? React.createElement(
             "div",
             { class: "nav_menu center" },
+            user.members
+              ? React.createElement(
+                  "a",
+                  { href: `/#Team`, class: "nav_link" },
+                  "Team"
+                )
+              : null,
             user?.data.map((element: any, index: number) => {
               return React.createElement(
                 "a",

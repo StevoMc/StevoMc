@@ -1,7 +1,7 @@
 import React from "react";
 import Member from "./Member";
 
-type Member = {
+type MemberType = {
   name: string;
   birthday: Date;
   job: string;
@@ -10,17 +10,18 @@ type Member = {
   bio: string;
 };
 
-const Members = (members: [Member]) =>
+const Members = (members: [MemberType]) =>
   React.createElement(
     "div",
-    { class: "row column" },
-    React.createElement("h1", { class: "center row" }, "Members"),
+    { class: "column padding_column center" },
+
+    React.createElement("h2", { class: "center margin_top_bottom" }, "Team"),
     React.createElement(
       "div",
-      { class: "members row center" },
-      members?.map((member: Member) => {
-        return Member(member.name, member.job, member.bio, member.profile);
-      })
+      { class: "member_container center" },
+      members?.map((member: MemberType) =>
+        Member(member.name, member.job, member.bio, member.profile)
+      )
     )
   );
 

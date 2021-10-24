@@ -13,7 +13,7 @@ const Member = (name: string, job: string, bio: string, pic: string) =>
       { class: "user_info_container" },
       React.createElement("h3", { class: "user_info" }, job),
       React.createElement("h2", { class: "user_info" }, name),
-      React.createElement("h3", { class: "user_info" }, bio)
+      React.createElement("h3", { class: "user_info intro_bio" }, bio)
     )
   );
 

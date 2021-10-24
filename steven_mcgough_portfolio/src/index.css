@@ -1,13 +1,15 @@
 :root {
   --primary-color: rgba(54, 54, 54, 0.849);
-  --secondary-color: rgb(22, 90, 236);
+  --secondary-color: rgb(68, 143, 255);
   --background-color: #131313;
   --nav-color: rgba(0, 0, 0, 0.65);
   --h1-color: rgba(255, 255, 255, 0.95);
   --h2-color: rgba(255, 255, 255, 0.8);
-  --h3-color: rgba(255, 255, 255, 0.6);
+  --h3-color: rgba(255, 255, 255, 0.7);
   --title-background: rgb(0, 0, 0);
   --text-background: rgb(41, 40, 40);
+  --hero_border: hsla(0, 0%, 69%, 0.829);
+  --hero_background: hsla(0, 0%, 89%, 0.747);
 }
 
 * {
@@ -24,6 +26,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #f5f5f5;
+}
+
+.dark-mode,
+.dark-mode .hero_img_container,
+.dark-mode > :root {
+  /* background-color: #f5f5f5; */
+  color: black;
+  --background-color: #e9e9e9;
+  --nav-color: rgba(184, 184, 184, 0.65);
+  --h1-color: rgba(0, 0, 0, 0.95);
+  --h2-color: rgba(0, 0, 0, 0.8);
+  --h3-color: rgba(0, 0, 0, 0.6);
+  --title-background: rgb(100, 100, 100);
+  --text-background: rgb(202, 202, 202);
+  --hero_border: hsla(0, 0%, 9%, 0.829);
+  --hero_background: hsla(0, 0%, 10%, 0.767);
 }
 
 code {
@@ -78,6 +96,10 @@ h3 {
 .column {
   flex-direction: column;
   justify-content: stretch;
+}
+
+.fixed {
+  position: sticky;
 }
 
 .margin_top_bottom {
@@ -160,9 +182,18 @@ h3 {
   color: var(--secondary-color);
 }
 
+#home {
+  margin: 5rem;
+}
+#request {
+  z-index: 99;
+  margin-top: 2rem;
+}
+
 .user_name_container {
-  height: 25vh;
+  height: 250px;
   max-height: 100%;
+  margin-bottom: -250px;
   overflow: hidden;
   font-size: 80px;
   object-fit: contain;
@@ -177,16 +208,14 @@ h3 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  text-shadow: 2px 2px 2px #000, 0 0 8px var(--secondary-color), 0 0 72px #000;
-  font-family: "Roboto";
   font-style: normal;
-  font-weight: bolder;
+  font-weight: 600;
   font-size: inherit;
   line-height: 75px;
   background-image: linear-gradient(
     0deg,
     var(--background-color),
-    var(--nav-color) 100%
+    var(--nav-color) 25%
   );
   /* background-color: var(--title-background); */
   height: 100%;
@@ -232,9 +261,9 @@ h3 {
   height: auto;
   max-width: 254px;
   padding: 12px;
-  border: 1px solid hsla(0, 0%, 100%, 0.3);
+  border: 1px solid var(--hero_border);
   border-radius: 50%;
-  background-color: hsla(0, 0%, 84%, 0.5);
+  background-color: var(--hero_background);
   -o-object-fit: cover;
   object-fit: cover;
 }
@@ -246,17 +275,24 @@ h3 {
   text-align: center;
 }
 
+.member_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+}
+
 .member {
-  /* border: 1px solid hsla(0, 0%, 100%, 0.3); */
+  border: 1px solid hsla(0, 0%, 100%, 0.3);
   border-radius: 12px;
-  padding: 2rem 0;
-  margin: 0 1.5rem;
+  padding: 3rem 0;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
-
+  justify-content: space-evenly;
   background: #0f2027; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to bottom,
@@ -266,7 +302,7 @@ h3 {
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to bottom,
-    #684626,
+    #926726,
     #203a43,
     #0f2027
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -274,14 +310,14 @@ h3 {
 }
 
 .user_info_container {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .user_info {
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .user_info_container:first-of-type,
 .user_info_container:last-of-type {
@@ -289,7 +325,25 @@ h3 {
 }
 
 .intro {
-  padding: 2rem 5rem;
+  padding: 0 3rem 3rem 3rem;
+  margin-top: 0;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#intro_user_info {
+  margin-top: 0;
+}
+
+.intro_bio {
+  font-weight: normal;
+  padding: 0 1rem;
+}
+
+#intro_job {
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.795);
 }
 
 .settings {
@@ -308,4 +362,13 @@ h3 {
   height: 40px;
   opacity: 1;
   background: #000;
+}
+
+.section {
+  height: 80vh;
+  padding: 8rem 3rem;
+  background: #333;
+}
+.section:nth-of-type(2n) {
+  background: var(--background-color);
 }

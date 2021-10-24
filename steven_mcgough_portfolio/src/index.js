@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import userProfile from "./Assets/UserImages/user_profil.png";
-import userProfilePlaceholder from "./Assets/UserImages/placeholder.jpg";
 
 const props = {
   name: "Steven McGough",
@@ -11,11 +10,41 @@ const props = {
   job: "Cyber Security Student",
   country: "Germany",
   profile: userProfile,
-  bio: "Als Cyber Security Student entwickelt Steven McGough beeindrukende und vorallem sichere Webseiten für Unternehmen, die einen großen Wert auf Qualität liegen.",
+  bio: "As a cyber security student, Steven McGough develops impressive and above all secure websites for companies which place a high emphasis on quality.",
   data: [
     {
       title: "Benifits",
-      content: "Ich bin besser als alle!",
+      content: React.createElement(
+        "div",
+        { class: "column wrap" /* style: { width: 254, height: 254 } */ },
+        React.createElement(
+          "img",
+          {
+            class: "",
+            src: "https://via.placeholder.com/150",
+            style: { width: 254, height: 254 },
+          },
+          null
+        ),
+        React.createElement(
+          "img",
+          {
+            class: "",
+            src: "https://via.placeholder.com/150",
+            style: { width: 254, height: 254 },
+          },
+          null
+        ),
+        React.createElement(
+          "img",
+          {
+            class: "",
+            src: "https://via.placeholder.com/150",
+            style: { width: 254, height: 254 },
+          },
+          null
+        )
+      ),
     },
     {
       title: "Projects",
@@ -23,11 +52,11 @@ const props = {
     },
     {
       title: "Process",
-      content: "Für die Uni eine Fullstack Webapp entwicket.",
+      content: "1. Anfrage stellen. 2. Zusammen Vorstellung bilden",
     },
     {
       title: "FAQ",
-      content: "Für die Uni eine Fullstack Webapp entwicket.",
+      content: "Hier Fragen stellen...",
     },
   ],
 };
@@ -39,15 +68,7 @@ const members = [
     job: "Cyber Security Student",
     country: "Germany",
     profile: userProfile,
-    bio: "Als Cyber Security Student entwickelt Steven McGough beeindrukende und vorallem sichere Webseiten für Unternehmen, die einen großen Wert auf Qualität liegen.",
-  },
-  {
-    name: "Moritz Petersen",
-    birthday: new Date(1980, 1, 1),
-    job: "Webflow Expert",
-    country: "Germany",
-    profile: userProfilePlaceholder,
-    bio: "Als Webflow Experte entwickelt Moritz Petersen beeindruckende Webseiten für Unternehmen, die mithilfe einer großartigen Webflow Webseite wachsen wollen.",
+    bio: "As a cyber security student, Steven McGough develops impressive and above all secure websites for companies which place a high emphasis on quality.",
   },
 ];
 

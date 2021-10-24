@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
-import userProfile from "./Assets/UserImages/user_profil.png";
-import userProfilePlaceholder from "./Assets/UserImages/placeholder.jpg";
 import Navbar from "./Components/Navbar";
 import Error from "./Components/Error";
-import HeaderRow from "./Components/HeaderRow";
+import H1Row from "./Components/H1Row";
 import Intro from "./Components/Intro";
 import PicDescRow from "./Components/PicDescRow";
+import Members from "./Components/Members";
+import SettingsIcon from "@mui/icons-material/Settings";
+
+type Member = {
+  name: string;
+  birthday: Date;
+  job: string;
+  country: string;
+  profile: string;
+  bio: string;
+};
 
 type Props = {
   name: string;
@@ -13,34 +22,42 @@ type Props = {
   age: number;
   job: string;
   country: string;
+  bio: string;
+  profile: string;
   dev: boolean;
   data: Array<any>;
+  members: [Member];
 };
 
 const App = (props: Props) => {
-  const [user, setUser] = useState(props);
-  const user_profil = props.dev ? userProfilePlaceholder : userProfile; // dev_comment
-
+  const [data, setData] = useState(props);
+  const [members, setMembers] = useState(props.members);
   const userAge = (a: Date, b: Date) => {
     const age =
       new Date(a).getFullYear() -
       new Date(
-        user?.birthday !== undefined ? user?.birthday.getTime() : Date.now()
+        data?.birthday !== undefined ? data?.birthday.getTime() : Date.now()
       ).getFullYear();
     return age;
   };
-
-  const description = `Hello, my name is ${user.name} and I am a  ${
-    user?.age ?? userAge(new Date(Date.now()), user?.birthday)
-  } year old ${user.job} from ${user.country}.`;
+  const description = `Hello, my name is ${data.name} and I am a  ${
+    data?.age ?? userAge(new Date(Date.now()), data?.birthday)
+  } year old ${data.job} from ${data.country}.`;
 
   return React.createElement(
     "div",
     { class: "app_container" },
-    Navbar(user),
-    HeaderRow(user.name),
-    Intro(user.name, user.job, user_profil),
-    PicDescRow(description, user_profil)
+    (data ?? members) === undefined ? Error : null,
+    Navbar(data),
+    React.createElement(
+      "div",
+      { class: "settings nav_link nav_logo center" },
+      SettingsIcon
+    ),
+    H1Row(data.name),
+    Intro(data.name, data.job, data.bio, data.profile),
+    Members(members),
+    PicDescRow(description, data.profile)
   );
 };
 

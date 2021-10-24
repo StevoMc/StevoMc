@@ -1,8 +1,8 @@
 :root {
-  --primary-color: rgb(54, 54, 54);
+  --primary-color: rgba(54, 54, 54, 0.849);
   --secondary-color: rgb(22, 90, 236);
-  --background-color: #1d1d1d;
-  --nav-color: rgba(0, 0, 0, 0.7);
+  --background-color: #131313;
+  --nav-color: rgba(0, 0, 0, 0.65);
   --h1-color: rgba(255, 255, 255, 0.95);
   --h2-color: rgba(255, 255, 255, 0.8);
   --h3-color: rgba(255, 255, 255, 0.6);
@@ -11,7 +11,7 @@
 }
 
 * {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 0;
 }
 
@@ -41,16 +41,16 @@ h1 {
 
 h2 {
   color: var(--h2-color);
-  font-size: 32px;
+  font-size: 36px;
 }
 
 h3 {
   color: var(--h3-color);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .app_container {
-  height: 200vh;
+  height: fit-content;
   margin-top: 60px;
   /* border: 1 solid red; */
 }
@@ -60,7 +60,7 @@ h3 {
   flex-wrap: nowrap;
   flex: 1 1 auto;
   justify-content: stretch;
-  margin: 1rem;
+  margin: 2rem;
   border-radius: 24px;
   overflow: auto;
   align-content: center;
@@ -70,8 +70,9 @@ h3 {
   padding: 3rem;
 }
 
-.padding_column {
-  padding: 1rem;
+.wrap {
+  flex-wrap: wrap;
+  flex: 1 1 auto;
 }
 
 .column {
@@ -242,4 +243,69 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.member {
+  /* border: 1px solid hsla(0, 0%, 100%, 0.3); */
+  border-radius: 12px;
+  padding: 2rem 0;
+  margin: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #684626,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #684626,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.user_info_container {
+  margin-top: 2rem;
+}
+
+.user_info {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.user_info_container:first-of-type,
+.user_info_container:last-of-type {
+  padding: 0 2rem;
+}
+
+.intro {
+  padding: 2rem 5rem;
+}
+
+.settings {
+  z-index: 112;
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  border: 1px solid #fff;
+  padding: 1rem;
+}
+
+#settings_icon {
+  z-index: 113;
+  color: #f5f5f5;
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  background: #000;
 }

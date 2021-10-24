@@ -37,6 +37,7 @@ const test_props = {
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <App /> */}
     <App {...props} />
     {/* <App {...test_props} dev /> */}
   </React.StrictMode>,

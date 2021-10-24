@@ -1,16 +1,18 @@
 :root {
-  --background-color: #333333;
-  --nav-color: rgba(0, 0, 0, 0.35);
+  --primary-color: rgb(54, 54, 54);
+  --secondary-color: rgb(22, 90, 236);
+  --background-color: #1d1d1d;
+  --nav-color: rgba(0, 0, 0, 0.7);
   --h1-color: rgba(255, 255, 255, 0.95);
   --h2-color: rgba(255, 255, 255, 0.8);
   --h3-color: rgba(255, 255, 255, 0.6);
-  --title-background: rgba(29, 29, 31, 0.75);
-  --text-background: rgba(29, 29, 31, 0.4);
+  --title-background: rgb(0, 0, 0);
+  --text-background: rgb(41, 40, 40);
 }
 
 * {
+  border: 1px solid red;
   margin: 0;
-  /* border: 1px solid red; */
 }
 
 body {
@@ -21,6 +23,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #f5f5f5;
 }
 
 code {
@@ -38,10 +41,12 @@ h1 {
 
 h2 {
   color: var(--h2-color);
+  font-size: 32px;
 }
 
 h3 {
   color: var(--h3-color);
+  font-size: 18px;
 }
 
 .app_container {
@@ -52,12 +57,34 @@ h3 {
 
 .row {
   display: flex;
+  flex-wrap: nowrap;
   flex: 1 1 auto;
   justify-content: stretch;
   margin: 1rem;
   border-radius: 24px;
-  overflow: hidden;
+  overflow: auto;
   align-content: center;
+  background-color: var(--text-background);
+}
+.padding_row {
+  padding: 3rem;
+}
+
+.padding_column {
+  padding: 1rem;
+}
+
+.column {
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.margin_top_bottom {
+  margin: 1rem 0;
+}
+
+.margin_left_right {
+  margin: 0 1rem;
 }
 
 .container {
@@ -81,7 +108,7 @@ h3 {
   z-index: 100;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid rgba(17, 17, 17, 0.8);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.8);
   background-color: var(--nav-color);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
@@ -96,49 +123,84 @@ h3 {
 
 .nav_logo {
   font-size: 18px !important;
+  height: 30px !important;
+  width: fit-content;
+}
+
+.logo_background {
+  background-image: url("https://pbs.twimg.com/profile_banners/780833723902156800/1573632305/1500x500") !important;
+  background-position: center !important;
+  object-fit: contain;
+  background-size: cover;
+  background-blend-mode: overlay;
 }
 
 .nav_link {
-  position: relative;
+  overflow: hidden;
   z-index: 102;
   display: inline-block;
   padding: 8px 18px;
   font-size: 14px;
+  margin: 0px 6px;
   font-weight: 500;
   letter-spacing: -0.011em;
   text-decoration: none;
   color: var(--h2-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  background: rgb(0, 0, 0, 0.3);
+}
+.nav_link:first-of-type,
+.nav_link:last-of-type {
+  margin: 0;
 }
 
 .nav_request {
-  color: rgb(22, 90, 236);
+  color: var(--secondary-color);
+}
+
+.user_name_container {
+  height: 25vh;
+  max-height: 100%;
+  overflow: hidden;
+  font-size: 80px;
+  object-fit: contain;
+  background-size: cover;
+  background-position: center;
+  background-image: url("https://pbs.twimg.com/profile_banners/780833723902156800/1573632305/1500x500");
 }
 
 .user_name {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   text-align: center;
+  text-shadow: 2px 2px 2px #000, 0 0 8px var(--secondary-color), 0 0 72px #000;
   font-family: "Roboto";
   font-style: normal;
-  font-weight: normal;
-  font-size: 64px;
+  font-weight: bolder;
+  font-size: inherit;
   line-height: 75px;
-  background-color: var(--title-background);
-  height: 350px;
+  background-image: linear-gradient(
+    0deg,
+    var(--background-color),
+    var(--nav-color) 100%
+  );
+  /* background-color: var(--title-background); */
+  height: 100%;
+  /* width: 100%; */
 }
 
 .user_description {
-  display: flex;
   flex-direction: column;
   background-color: var(--text-background);
-  justify-content: center;
-  align-items: center;
   padding: 3rem 6rem;
-  flex: 1 1 auto;
+  flex: 1 1;
   color: var(--h2-color);
   text-align: center;
   font-size-adjust: auto;
+  font-size: 24px;
 }
 
 .user_profile {
@@ -146,19 +208,38 @@ h3 {
   max-height: 100%;
   max-width: 333px;
   object-fit: cover;
-  border-right: 4px solid #000;
 }
 
 .error {
-  z-index: 99;
+  z-index: 110;
   position: absolute;
-  top: 75px;
-  margin: 0 25%;
-  width: 50%;
+  left: 1rem;
+  margin: 0 auto;
   text-align: center;
   padding: 16px;
   opacity: 100%;
-  color: rgb(163, 221, 28);
+  color: rgb(226, 185, 0);
   font-weight: bold;
-  background-color: rgba(201, 12, 12, 0.5);
+  background-color: rgb(129, 9, 9);
+}
+
+.hero_img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  height: auto;
+  max-width: 254px;
+  padding: 12px;
+  border: 1px solid hsla(0, 0%, 100%, 0.3);
+  border-radius: 50%;
+  background-color: hsla(0, 0%, 84%, 0.5);
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

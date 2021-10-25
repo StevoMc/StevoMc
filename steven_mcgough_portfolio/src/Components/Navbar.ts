@@ -34,7 +34,7 @@ const Navbar = (props: Props) => {
         ? React.createElement(
             "div",
             { class: "nav_menu center" },
-            user.members
+            (user.members?.length || 0) > 1
               ? React.createElement(
                   "a",
                   { href: `/#Team`, class: "nav_link" },

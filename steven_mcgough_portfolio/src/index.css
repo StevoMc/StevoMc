@@ -169,9 +169,14 @@ h3 {
   letter-spacing: -0.011em;
   text-decoration: none;
   color: var(--h2-color);
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--nav-color);
   border-radius: 12px;
-  background: rgb(0, 0, 0, 0.3);
+  /* background: rgb(0, 0, 0, 0.3); */
+  cursor: pointer;
+  transition: border 0.2s ease;
+}
+.nav_link:hover {
+  border: 1px solid var(--secondary-color);
 }
 .nav_link:first-of-type,
 .nav_link:last-of-type {
@@ -188,6 +193,10 @@ h3 {
 #request {
   z-index: 99;
   margin-top: 2rem;
+  border: 1px solid var(--primary-color);
+}
+#request:hover {
+  border: 1px solid var(--secondary-color);
 }
 
 .user_name_container {

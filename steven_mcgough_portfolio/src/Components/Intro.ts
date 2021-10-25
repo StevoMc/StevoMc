@@ -1,5 +1,9 @@
 import React from "react";
 
+const requestClickEvent = (event: Event) => {
+  alert("Click");
+};
+
 const Intro = (name: string, job: string, bio: string, pic: string) =>
   React.createElement(
     "div",
@@ -22,7 +26,11 @@ const Intro = (name: string, job: string, bio: string, pic: string) =>
     ),
     React.createElement(
       "div",
-      { id: "request", class: "nav_link nav_logo nav_request center" },
+      {
+        id: "request",
+        class: "nav_link nav_logo nav_request center",
+        onClick: (event: Event) => requestClickEvent(event),
+      },
       "Request your project now"
     )
   );

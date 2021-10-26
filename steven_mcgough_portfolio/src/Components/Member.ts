@@ -11,9 +11,9 @@ const Member = (name: string, job: string, bio: string, pic: string) =>
     React.createElement(
       "div",
       { class: "user_info_container" },
-      React.createElement("h3", { class: "user_info" }, job),
-      React.createElement("h2", { class: "user_info" }, name),
-      React.createElement("h3", { class: "user_info intro_bio" }, bio)
+      React.createElement("h3", { class: "members_job" }, job),
+      React.createElement("h1", { class: "user_info h1" }, name),
+      React.createElement("h3", { class: "members_bio" }, bio)
     )
   );
 

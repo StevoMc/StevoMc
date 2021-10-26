@@ -1,7 +1,13 @@
+* {
+  /* border: 1px solid red; */
+  margin: 0;
+  line-height: 150%;
+}
+
 :root {
   --primary-color: rgba(54, 54, 54, 0.849);
   --secondary-color: rgb(68, 143, 255);
-  --background-color: #131313;
+  --background-color: #1d1d1f;
   --nav-color: rgba(0, 0, 0, 0.65);
   --h1-color: rgba(255, 255, 255, 0.95);
   --h2-color: rgba(255, 255, 255, 0.8);
@@ -10,11 +16,6 @@
   --text-background: rgb(41, 40, 40);
   --hero_border: hsla(0, 0%, 69%, 0.829);
   --hero_background: hsla(0, 0%, 89%, 0.747);
-}
-
-* {
-  /* border: 1px solid red; */
-  margin: 0;
 }
 
 body {
@@ -59,12 +60,12 @@ h1 {
 
 h2 {
   color: var(--h2-color);
-  font-size: 36px;
+  font-size: 1.25em;
 }
 
 h3 {
   color: var(--h3-color);
-  font-size: 16px;
+  font-size: 1.3rem;
 }
 
 .app_container {
@@ -202,13 +203,12 @@ h3 {
 .user_name_container {
   height: 250px;
   max-height: 100%;
-  margin-bottom: -250px;
+  margin-bottom: -150px;
   overflow: hidden;
-  font-size: 80px;
+  font-size: 3em;
   object-fit: contain;
   background-size: cover;
   background-position: center;
-  background-image: url("https://pbs.twimg.com/profile_banners/780833723902156800/1573632305/1500x500");
 }
 
 .user_name {
@@ -267,7 +267,9 @@ h3 {
   justify-content: center;
   align-items: center;
   z-index: 3;
-  height: auto;
+  height: 254px;
+  width: 254px;
+  /* height: auto; */
   max-width: 254px;
   padding: 12px;
   border: 1px solid var(--hero_border);
@@ -293,8 +295,8 @@ h3 {
 }
 
 .member {
-  border: 1px solid hsla(0, 0%, 100%, 0.3);
-  border-radius: 12px;
+  /* border: 3px solid hsla(0, 0%, 100%, 0.3); */
+  border-radius: 24px;
   padding: 3rem 0;
   margin: 1rem;
   display: flex;
@@ -330,29 +332,34 @@ h3 {
 }
 .user_info_container:first-of-type,
 .user_info_container:last-of-type {
-  padding: 0 2rem;
+  padding: 0 3rem;
 }
 
 .intro {
-  padding: 0 3rem 3rem 3rem;
+  padding: 0 3rem 8rem 3rem;
   margin-top: 0;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  font-size: 3em;
 }
 
 #intro_user_info {
   margin-top: 0;
-}
-
-.intro_bio {
-  font-weight: normal;
-  padding: 0 1rem;
+  color: rgba(255, 255, 255, 0.877);
 }
 
 #intro_job {
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.795);
+  font-weight: 300;
+  padding: 0 1rem;
+  font-size: 0.5em;
+  margin: 2rem 0;
+  color: rgba(255, 255, 255, 0.856);
+}
+
+#intro_bio {
+  font-size: 0.45em;
+  font-weight: 500;
 }
 
 .settings {
@@ -374,10 +381,40 @@ h3 {
 }
 
 .section {
-  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+
+  min-height: 80vh;
   padding: 8rem 3rem;
-  background: #333;
+  background: var(--background-color);
 }
 .section:nth-of-type(2n) {
-  background: var(--background-color);
+  background: #000;
+}
+
+.content_span {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.content_title {
+  font-size: 3em;
+}
+
+.members_bio {
+  font-size: 1em;
+  color: var(--h3-color);
+}
+
+.member_job {
+  margin-top: 1em;
+  color: var(--h3-color);
+}
+
+.member_info {
+  justify-content: space-between;
 }

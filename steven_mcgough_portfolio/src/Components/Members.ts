@@ -10,17 +10,20 @@ type MemberType = {
   bio: string;
 };
 
-const Members = (members: [MemberType]) =>
+const Members = (members: MemberType[]) =>
   React.createElement(
     "div",
-    { class: "column padding_column center" },
-
-    React.createElement("h2", { class: "center margin_top_bottom" }, "Team"),
+    { class: "column" },
     React.createElement(
-      "div",
-      { class: "member_container center" },
-      members?.map((member: MemberType) =>
-        Member(member.name, member.job, member.bio, member.profile)
+      "span",
+      { class: "content_span" },
+      React.createElement("h2", { class: "content_title" }, "Team"),
+      React.createElement(
+        "div",
+        { class: "member_container center" },
+        members?.map((member: MemberType) =>
+          Member(member.name, member.job, member.bio, member.profile)
+        )
       )
     )
   );

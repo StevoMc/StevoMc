@@ -1,13 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { Client } from "@notionhq/client";
 import App from "./App";
 import userProfile from "./Assets/UserImages/user_profil.png";
 import userProfilePlaceholder from "./Assets/UserImages/placeholder.jpg";
 import PictureShowcase from "Components/PictureShowcase";
 import SkillsShowcase from "Components/SkillsShowcase";
-require("dotenv").config();
 
 type Skill = {
   title: string;
@@ -188,10 +186,6 @@ const data_initial = {
   functions: setFunctions,
 };
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
-
-const databaseId = process.env.NOTION_DATABASE_ID;
-
 ReactDOM.render(
   <React.StrictMode>
     <App
@@ -203,3 +197,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+// console.log(notion.members().length);

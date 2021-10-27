@@ -1,9 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { Client } from "@notionhq/client";
 import App from "./App";
 import userProfile from "./Assets/UserImages/user_profil.png";
 import userProfilePlaceholder from "./Assets/UserImages/placeholder.jpg";
+import PictureShowcase from "Components/PictureShowcase";
+import SkillsShowcase from "Components/SkillsShowcase";
+require("dotenv").config();
 
 type Skill = {
   title: string;
@@ -48,169 +52,90 @@ const setFunctions = {
 };
 
 const skills = [
-  { title: "NodeJS", logo: userProfile, status: "beginner" },
-  { title: "JavaScript", logo: userProfile, status: "beginner" },
-  { title: "MongoDB", logo: userProfile, status: "beginner" },
-  { title: "React", logo: userProfile, status: "beginner" },
-  { title: "React Native", logo: userProfile, status: "beginner" },
-  { title: "CSS", logo: userProfile, status: "beginner" },
-  { title: "HTML", logo: userProfile, status: "beginner" },
-  { title: "Firebase", logo: userProfile, status: "beginner" },
-  { title: "Sass", logo: userProfile, status: "beginner" },
-  { title: "Typescript", logo: userProfile, status: "beginner" },
+  {
+    title: "NodeJS",
+    logo: "https://cdn.worldvectorlogo.com/logos/nodejs-2.svg",
+    status: "beginner",
+  },
+  {
+    title: "JavaScript",
+    logo: "https://cdn.worldvectorlogo.com/logos/logo-javascript.svg",
+    status: "beginner",
+  },
+  {
+    title: "MongoDB",
+    logo: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg",
+    status: "beginner",
+  },
+  {
+    title: "React",
+    logo: "https://cdn.worldvectorlogo.com/logos/react-2.svg",
+    status: "beginner",
+  },
+  {
+    title: "React Native",
+    logo: "https://cdn.worldvectorlogo.com/logos/react-native-1.svg",
+    status: "beginner",
+  },
+  {
+    title: "CSS",
+    logo: "https://cdn.worldvectorlogo.com/logos/css-3.svg",
+    status: "beginner",
+  },
+  {
+    title: "HTML",
+    logo: "https://cdn.worldvectorlogo.com/logos/html-1.svg",
+    status: "beginner",
+  },
+  {
+    title: "Firebase",
+    logo: "https://cdn.worldvectorlogo.com/logos/firebase-1.svg",
+    status: "beginner",
+  },
+  {
+    title: "Sass",
+    logo: "https://cdn.worldvectorlogo.com/logos/sass-1.svg",
+    status: "beginner",
+  },
+  {
+    title: "Typescript",
+    logo: "https://cdn.worldvectorlogo.com/logos/typescript.svg",
+    status: "beginner",
+  },
 ];
 
 const pageContent = [
   {
     title: "Benifits",
-    content: ["skills", "pictures"],
+    content: [
+      SkillsShowcase(skills),
+      PictureShowcase([
+        userProfile,
+        "https://via.placeholder.com/150",
+        userProfilePlaceholder,
+        "https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_960_720.png",
+        userProfile,
+        "https://via.placeholder.com/150",
+        userProfilePlaceholder,
+        userProfile,
+        "https://via.placeholder.com/150",
+        userProfilePlaceholder,
+      ]),
+    ],
   },
   {
     title: "Projects",
-    content: "Für die Uni eine Fullstack Webapp entwicket.",
+    content: ["Für die Uni eine Fullstack Webapp entwicket."],
   },
   {
     title: "Process",
-    content: "1. Anfrage stellen. 2. Zusammen Vorstellung bilden",
+    content: ["1. Anfrage stellen. 2. Zusammen Vorstellung bilden"],
   },
   {
     title: "FAQ",
-    content: "Hier Fragen stellen...",
+    content: ["Hier Fragen stellen..."],
   },
 ];
-
-// Benifits
-/* React.createElement(
-        "div",  
-        {
-          class: "column",
-        },
-        // Skills
-        React.createElement(
-          "div",
-          { class: "row column padding_row" },
-          React.createElement(
-            "h2",
-            {
-              class: "",
-              style: {
-                flex: "1",
-              },
-            },
-            "Skills:"
-          ),
-          React.createElement(
-            "div",
-            {
-              class: "",
-              style: {
-                flexWrap: "wrap",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-start",
-              },
-            },
-            // MAP Skills HERE 
-            mapSkills(skills)
-          )
-        ),*/
-
-// Pictures
-/*
-        React.createElement(
-          "div",
-          {
-            class: "row padding_row",
-            style: {
-              display: "flex",
-              justifyContent: "space-between",
-              height: "fit-content",
-              flexWrap: "wrap",
-            },
-          },
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          ),
-          React.createElement(
-            "img",
-            {
-              class: "",
-              src: "https://via.placeholder.com/150",
-              style: { width: 254, height: 254 },
-            },
-            null
-          )
-        )
-      ), */
 
 const members_initial = [
   {
@@ -221,6 +146,7 @@ const members_initial = [
     country: "Germany",
     profile: userProfile,
     bio: "As a cyber security student, Steven McGough develops impressive and above all secure websites for companies which place a high emphasis on quality.",
+    description: "",
   },
   {
     name: "Moritz Petersen",
@@ -230,6 +156,7 @@ const members_initial = [
     country: "Germany",
     profile: userProfilePlaceholder,
     bio: "As the Webflow expert, Moritz Petersen develops impressive websites for companies that want to grow with the help of a great Webflow website.",
+    description: "",
   },
   {
     name: "Moritz Petersen",
@@ -239,6 +166,7 @@ const members_initial = [
     country: "Germany",
     profile: userProfilePlaceholder,
     bio: "As the Webflow expert, Moritz Petersen develops impressive websites for companies that want to grow with the help of a great Webflow website.",
+    description: "",
   },
 ];
 
@@ -250,11 +178,19 @@ const data_initial = {
   country: members_initial[0].country,
   profile: members_initial[0].profile,
   bio: members_initial[0].bio,
+  description: `Hello, my name is ${
+    members_initial[0].name
+  } and I am a  ${setFunctions.userAge(
+    new Date(Date.now()),
+    members_initial[0].birthday
+  )} year old ${members_initial[0].job} from ${members_initial[0].country}.`,
   skills: skills,
   functions: setFunctions,
 };
 
-// data: pageContent,
+const notion = new Client({ auth: process.env.NOTION_API_KEY });
+
+const databaseId = process.env.NOTION_DATABASE_ID;
 
 ReactDOM.render(
   <React.StrictMode>

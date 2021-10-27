@@ -24,6 +24,7 @@ type Data = {
   job: string;
   country: string;
   bio: string;
+  description: string;
   profile: string;
   skills: {
     title: string;
@@ -51,6 +52,7 @@ const data_template = {
   country: "",
   profile: "",
   bio: "",
+  description: "",
   skills: [],
   functions: {},
 };
@@ -65,6 +67,44 @@ const members_template = [
     bio: "",
   },
 ];
+
+// Benifits
+/* React.createElement(
+        "div",  
+        {
+          class: "column",
+        },
+        // Skills
+        React.createElement(
+          "div",
+          { class: "row column padding_row" },
+          React.createElement(
+            "h2",
+            {
+              class: "",
+              style: {
+                flex: "1",
+              },
+            },
+            "Skills:"
+          ),
+          React.createElement(
+            "div",
+            {
+              class: "",
+              style: {
+                flexWrap: "wrap",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-start",
+              },
+            },
+            // MAP Skills HERE 
+            mapSkills(skills)
+          )
+        ),*/
+
+// Pictures
 
 const App = (props: Props) => {
   const [data, setData] = useState<Data>(props.data ?? data_template);
@@ -90,15 +130,9 @@ const App = (props: Props) => {
   useEffect(() => {
     if (props.data !== data) setData(props.data);
     if (props.members !== members) setMembers(props.members);
-  }, [data, members, darkMode, props.data, props.members]);
 
-  // Description for Welcome Message
-  const description = `Hello, my name is ${
-    data?.name
-  } and I am a  ${functions.userAge(
-    new Date(Date.now()),
-    data?.birthday
-  )} year old ${data?.job} from ${data?.country}.`;
+    console.log(pageContent);
+  }, [data, members, darkMode, props.data, props.members]);
 
   const App = (el: any[]) =>
     React.createElement(
@@ -156,16 +190,16 @@ const App = (props: Props) => {
       : null;
   };
 
-  const Content = () =>
-    pageContent.map(
+  const Content = (el: any[]) =>
+    el.map(
       (
         element: {
           title: string;
           content: any;
         },
         index: any
-      ) => {
-        return Section(element.title, true, [
+      ) =>
+        Section(element.title, true, [
           React.createElement(
             "span",
             { class: "content_span", key: index },
@@ -174,10 +208,19 @@ const App = (props: Props) => {
               { class: "content_title" },
               element.title
             ),
-            React.createElement("h3", { class: "content" }, element.content)
+            React.createElement(
+              "div",
+              { class: "content" },
+              element.content.map((el: any, index: number) => {
+                return React.createElement(
+                  "div",
+                  { key: index, id: index, class: "content_inner" },
+                  el
+                );
+              })
+            )
           ),
-        ]);
-      }
+        ])
     );
 
   const Footer = () => {
@@ -200,9 +243,10 @@ const App = (props: Props) => {
         H1Row(""),
         Intro(data.name, data.profile, data.bio, data.job),
       ]),
-      Section("Row", false, [PicDescRow(description, data.profile)]),
+      Section("Row", false, [PicDescRow(data.description, data.profile)]),
       Team(),
-      Content(),
+
+      Content(pageContent),
     ]),
     Footer(),
   ]);

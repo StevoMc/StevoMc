@@ -8,7 +8,7 @@
   --primary-color: rgba(54, 54, 54, 0.849);
   --secondary-color: rgb(68, 143, 255);
   --background-color: #1d1d1f;
-  --nav-color: rgba(0, 0, 0, 0.65);
+  --nav-color: rgba(0, 0, 0, 0.575);
   --h1-color: rgba(255, 255, 255, 0.95);
   --h2-color: rgba(255, 255, 255, 0.8);
   --h3-color: rgba(255, 255, 255, 0.7);
@@ -171,7 +171,7 @@ h3 {
   letter-spacing: -0.011em;
   text-decoration: none;
   color: var(--h2-color);
-  border: 1px solid var(--nav-color);
+  border: 1px solid #00000000;
   border-radius: 12px;
   /* background: rgb(0, 0, 0, 0.3); */
   cursor: pointer;
@@ -361,22 +361,20 @@ h3 {
   font-weight: 500;
 }
 
-.settings {
-  z-index: 112;
-  position: fixed;
-  left: 1rem;
-  bottom: 1rem;
-  border: 1px solid #fff;
+.dark_mode_btn {
+  z-index: 3;
+  position: absolute;
+  right: 1rem;
+  top: 6rem;
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
   padding: 0.5rem 1rem;
+  background: #ddd;
 }
 
-#settings_icon {
-  z-index: 113;
-  color: #f5f5f5;
-  width: 40px;
-  height: 40px;
-  opacity: 1;
-  background: #000;
+.dark_mode_btn_icon {
+  width: 25px;
+  height: 25px;
 }
 
 .section {

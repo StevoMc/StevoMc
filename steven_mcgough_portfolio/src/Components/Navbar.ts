@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 type Props = {
   name: string; // the name of the user
@@ -8,7 +8,7 @@ type Props = {
   country: string;
   bio: string;
   profile: string;
-  data: {
+  pageContent: {
     title: string;
     content: any;
   }[];
@@ -22,8 +22,9 @@ type Props = {
   }[];
 };
 
-const requestClickEvent = (event: Event) => {
-  alert("Click");
+const requestClickEvent = async (event: Event) => {
+  console.log(event.target);
+  alert("New Request at:  " + new Date().toDateString());
 };
 
 const Navbar = (props: Props) => {
@@ -37,7 +38,7 @@ const Navbar = (props: Props) => {
         ? React.createElement(
             "a",
             {
-              href: "/",
+              href: "/#",
               class: "nav_logo nav_link center",
             },
             props?.name
@@ -47,7 +48,7 @@ const Navbar = (props: Props) => {
             { class: "nav_link nav_logo center" },
             "No User Data Available"
           ),
-      props?.data !== undefined
+      props?.pageContent !== undefined
         ? React.createElement(
             "div",
             { class: "nav_menu center" },
@@ -58,7 +59,7 @@ const Navbar = (props: Props) => {
                   "Team"
                 )
               : null,
-            props?.data.map((element: any, index: number) => {
+            props?.pageContent.map((element: any, index: number) => {
               return React.createElement(
                 "a",
                 { href: `/#${element.title}`, class: "nav_link" },

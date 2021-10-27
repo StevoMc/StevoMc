@@ -5,8 +5,8 @@ import H1Row from "./Components/H1Row";
 import Intro from "./Components/Intro";
 import PicDescRow from "./Components/PicDescRow";
 import Members from "./Components/Members";
-import userProfile from "./Assets/UserImages/user_profil.png";
-import user_banner from "./Assets/UserImages/user_banner.jpeg";
+import darkModeIcon from "./Assets/Clipart/darkmode.svg";
+import lightModeIcon from "./Assets/Clipart/lightmode.svg";
 
 type Member = {
   name: string;
@@ -25,15 +25,22 @@ type Data = {
   country: string;
   bio: string;
   profile: string;
-  data: {
+  skills: {
     title: string;
-    content: any;
+    logo: string;
+    status: string;
   }[];
+  functions: any;
 };
 
 type Props = {
   data: Data;
   members: Member[];
+  pageContent: {
+    title: string;
+    content: any;
+  }[];
+  functions: any;
 };
 
 const data_template = {
@@ -44,7 +51,8 @@ const data_template = {
   country: "",
   profile: "",
   bio: "",
-  data: [],
+  skills: [],
+  functions: {},
 };
 
 const members_template = [
@@ -63,6 +71,8 @@ const App = (props: Props) => {
   const [members, setMembers] = useState<Member[]>(
     props.members ?? members_template
   );
+  const [pageContent, setContent] = useState<any>(props.pageContent);
+  const [functions, setFunctions] = useState<any>(props.functions);
   const [darkMode, setDarkMode] = useState(true);
 
   const clickEvent = useCallback(() => {
@@ -82,31 +92,26 @@ const App = (props: Props) => {
     if (props.members !== members) setMembers(props.members);
   }, [data, members, darkMode, props.data, props.members]);
 
-  // Calculate User Age
-  const userAge = (a: Date, b: Date) => {
-    const age =
-      new Date(a).getFullYear() -
-      new Date(
-        data?.birthday !== undefined ? data?.birthday.getTime() : Date.now()
-      ).getFullYear();
-    return age;
-  };
-
   // Description for Welcome Message
-  const description = `Hello, my name is ${data?.name} and I am a  ${userAge(
+  const description = `Hello, my name is ${
+    data?.name
+  } and I am a  ${functions.userAge(
     new Date(Date.now()),
     data?.birthday
   )} year old ${data?.job} from ${data?.country}.`;
 
-  return React.createElement(
-    "div",
-    { class: "app_container" },
-    (data ?? members) === undefined ? Error : null,
-    Navbar({ ...data, members }),
+  const App = (el: any[]) =>
     React.createElement(
       "div",
+      { class: "app_container" },
+      el.map((x: any) => x)
+    );
+
+  const DarkmodeButton = () => {
+    return React.createElement(
+      "div",
       {
-        class: "settings nav_link nav_logo center",
+        class: "dark_mode_btn nav_link nav_logo center",
         onClick: (e: any) => {
           setDarkMode(!darkMode);
           clickEvent();
@@ -114,33 +119,53 @@ const App = (props: Props) => {
           element.classList.toggle("dark-mode");
         },
       },
-      darkMode ? "Dark" : "Bight"
-    ),
-    H1Row("" /* data?.name */),
-    React.createElement(
+      darkMode
+        ? React.createElement("img", {
+            src: darkModeIcon,
+            class: "dark_mode_btn_icon",
+            style: { loading: "lazy" },
+          })
+        : React.createElement("img", {
+            src: lightModeIcon,
+            class: "dark_mode_btn_icon",
+            style: { loading: "lazy" },
+          })
+    );
+  };
+
+  const SectionMain = (el: any[]) => {
+    return React.createElement(
       "main",
       { class: "content_container column" },
-      React.createElement(
-        "section",
-        { id: "Home" },
-        Intro(data.name, data!.profile, data!.bio, data!.job)
-      ),
-      React.createElement(
-        "section",
-        { id: "Row" },
-        PicDescRow(description, data!.profile)
-      ),
-      (members!.length || 0) > 1
-        ? React.createElement(
-            "section",
-            { id: "Team", class: "section" },
-            Members(members!)
-          )
-        : null,
-      data!.data.map((element, index) => {
-        return React.createElement(
-          "section",
-          { id: element.title, class: "section" },
+      el.map((x: any) => x)
+    );
+  };
+
+  const Section = (id: string, isSection: boolean, el: any[]) => {
+    const cla = isSection ? "section" : "";
+    return React.createElement(
+      "section",
+      { id: id, class: cla },
+      el.map((x: any) => x)
+    );
+  };
+
+  const Team = () => {
+    return (members!.length || 0) > 1
+      ? Section("Team", true, [Members(members!)])
+      : null;
+  };
+
+  const Content = () =>
+    pageContent.map(
+      (
+        element: {
+          title: string;
+          content: any;
+        },
+        index: any
+      ) => {
+        return Section(element.title, true, [
           React.createElement(
             "span",
             { class: "content_span", key: index },
@@ -150,12 +175,37 @@ const App = (props: Props) => {
               element.title
             ),
             React.createElement("h3", { class: "content" }, element.content)
-          )
-        );
-      })
-    ),
-    ""
-  );
+          ),
+        ]);
+      }
+    );
+
+  const Footer = () => {
+    return React.createElement(
+      "div",
+      {
+        id: "footer",
+        class: "",
+        style: { background: "#444", height: "8rem", padding: "2rem 3rem" },
+      },
+      "Footer"
+    );
+  };
+
+  return App([
+    DarkmodeButton(),
+    Navbar({ ...data, pageContent, members }),
+    SectionMain([
+      Section("Home", false, [
+        H1Row(""),
+        Intro(data.name, data.profile, data.bio, data.job),
+      ]),
+      Section("Row", false, [PicDescRow(description, data.profile)]),
+      Team(),
+      Content(),
+    ]),
+    Footer(),
+  ]);
 };
 
 export default App;

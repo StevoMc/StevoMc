@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm @StevoMc</h1>
-<h3 align="center">A passionate frontend developer from India</h3>
+<h3 align="center">A Fullstack Developer with 5 years of experience in building web applications. I'm passionate about creating user-friendly and responsive interfaces, as well as designing and implementing efficient back-end systems.</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=stevomc&label=Profile%20views&color=0e75b6&style=flat" alt="stevomc" /> </p>
 

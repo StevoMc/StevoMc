@@ -34,7 +34,7 @@ Here are some ideas to get you started:
     <p>
     	<img
     		align="center"
-    		src="https://github-readme-streak-stats.herokuapp.com/?user=stevomc&"
+    		src="https://github-readme-streak-stats.herokuapp.com/?user=stevomc"
     		alt="stevomc"
     	/>
     </p>

@@ -26,8 +26,11 @@ Here are some ideas to get you started:
 
   <section style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
     <img src="https://github-readme-stats.vercel.app/api?username=stevomc&show_icons=true&locale=en" alt="StevoMc GitHub Stats" style="max-width: 100%; height: auto;" />
+    <br>
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=stevomc" alt="StevoMc GitHub Streak" style="max-width: 100%; height: auto;" />
   </section>
+
+  <br>
 
   <section style="margin-bottom: 2rem;">
     <a href="https://github.com/ryo-ma/github-profile-trophy" target="_blank" rel="noreferrer">
